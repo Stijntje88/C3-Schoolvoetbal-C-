@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("c# schoolvoetbal c3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f38886aeebe275d06504152e0a4da2a30292e3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("c# schoolvoetbal c3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("c# schoolvoetbal c3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
