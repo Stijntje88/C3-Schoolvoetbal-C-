@@ -1,0 +1,1 @@
+C:\laragon\native blok c\gokappC#\gokappC#.csproj;x86

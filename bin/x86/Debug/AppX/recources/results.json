@@ -1,0 +1,14 @@
+[
+  {
+    "TeamName": "Team A",
+    "Outcome": "Winnend"
+  },
+  {
+    "TeamName": "Team B",
+    "Outcome": "Verliezend"
+  },
+  {
+    "TeamName": "Team C",
+    "Outcome": "Verliezend"
+  }
+]
