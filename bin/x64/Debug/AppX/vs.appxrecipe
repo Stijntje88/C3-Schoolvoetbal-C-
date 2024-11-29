@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-11-26T08:43:39.447</Modified>
+      <Modified>2024-11-27T08:58:14.101</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x64\Debug\gokappC#.exe">
       <PackagePath>entrypoint\gokappC#.exe</PackagePath>
-      <Modified>2024-11-26T08:43:36.502</Modified>
+      <Modified>2024-11-27T08:58:13.378</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Stijn van Daelen\.nuget\packages\microsoft.bcl.asyncinterfaces\9.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
@@ -114,11 +114,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2024-11-26T08:43:35.867</Modified>
+      <Modified>2024-11-27T08:58:13.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2024-11-26T08:43:35.867</Modified>
+      <Modified>2024-11-27T08:58:13.292</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.22621.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -130,7 +130,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x64\Debug\Core\gokappC#.exe">
       <PackagePath>gokappC#.exe</PackagePath>
-      <Modified>2024-11-26T08:43:39.437</Modified>
+      <Modified>2024-11-27T08:58:14.095</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

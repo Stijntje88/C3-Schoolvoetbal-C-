@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -10,40 +11,43 @@ namespace GokApp
 {
     public sealed partial class MainPage : Page
     {
-        // Lijsten voor teams en resultaten
+        private readonly HttpClient client = new HttpClient();
         private List<Team> teams;
         private List<Result> results;
 
         public MainPage()
         {
             this.InitializeComponent();
-
-            // Laad de gegevens uit de JSON-bestanden
-            LoadTeams();
-            LoadResults();
-
-            // Zet de ComboBox items (teams) als de geladen lijst van teams
-            teamComboBox.ItemsSource = teams;
+            LoadDataAsync();
         }
 
-        // Methode om teams uit een JSON-bestand te laden
-        private void LoadTeams()
+        private async Task LoadDataAsync()
         {
-            string teamsJson = File.ReadAllText(@"recources\teams.json");
-            teams = JsonConvert.DeserializeObject<List<Team>>(teamsJson);
+            try
+            {
+                // API-aanroepen
+                teams = await FetchDataAsync<List<Team>>("https://jouw-api-url/teams");
+                results = await FetchDataAsync<List<Result>>("https://jouw-api-url/results");
+
+                // Update UI
+                teamComboBox.ItemsSource = teams;
+            }
+            catch (Exception ex)
+            {
+                // Foutmelding weergeven
+                resultLabel.Text = $"Fout bij het laden van gegevens: {ex.Message}";
+                resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+            }
         }
 
-        // Methode om resultaten uit een JSON-bestand te laden
-        private void LoadResults()
+        private async Task<T> FetchDataAsync<T>(string url)
         {
-            string resultsJson = File.ReadAllText(@"recources\results.json");
-            results = JsonConvert.DeserializeObject<List<Result>>(resultsJson);
+            var response = await client.GetStringAsync(url);
+            return JsonConvert.DeserializeObject<T>(response);
         }
 
-        // Event handler voor de gok knop
         private void GokButton_Click(object sender, RoutedEventArgs e)
         {
-            // Haal het geselecteerde team op
             Team selectedTeam = teamComboBox.SelectedItem as Team;
             if (selectedTeam == null)
             {
@@ -52,12 +56,10 @@ namespace GokApp
                 return;
             }
 
-            // Zoek het resultaat voor het geselecteerde team in de resultatenlijs
             Result selectedResult = results.Find(r => r.TeamName == selectedTeam.Name);
             if (selectedResult != null)
             {
-                // Toon het resultaat uit het JSON-bestand
-                 resultLabel.Text = $"{selectedResult.TeamName} heeft {selectedResult.Outcome.ToLower()}!";
+                resultLabel.Text = $"{selectedResult.TeamName} heeft {selectedResult.Outcome.ToLower()}!";
                 resultLabel.Foreground = selectedResult.Outcome == "Winnend"
                     ? new SolidColorBrush(Windows.UI.Colors.Green)
                     : new SolidColorBrush(Windows.UI.Colors.Red);
@@ -70,17 +72,15 @@ namespace GokApp
         }
     }
 
-    // Teamklasse om de gegevens uit teams.json te representeren
     public class Team
     {
         public string Name { get; set; }
-        public double Probability { get; set; } // Kans op winnen
+        public double Probability { get; set; }
     }
 
-    // Resultaatklasse om de gegevens uit results.json te representeren
     public class Result
     {
         public string TeamName { get; set; }
-        public string Outcome { get; set; } // "Winnend" of "Verliezend"
+        public string Outcome { get; set; }
     }
 }
