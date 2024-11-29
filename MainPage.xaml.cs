@@ -12,25 +12,24 @@ namespace GokApp
     public sealed partial class MainPage : Page
     {
         private readonly HttpClient client = new HttpClient();
-        private List<Team> teams;
-        private List<Result> results;
+        private List<Match> matches;
+        private double balance = 100.0; // Start met 100 nep geld
 
         public MainPage()
         {
             this.InitializeComponent();
-            LoadDataAsync();
+            _ = LoadMatchesAsync();
         }
 
-        private async Task LoadDataAsync()
+        private async Task LoadMatchesAsync()
         {
             try
             {
-                // API-aanroepen
-                teams = await FetchDataAsync<List<Team>>("https://jouw-api-url/teams");
-                results = await FetchDataAsync<List<Result>>("https://jouw-api-url/results");
+                // Haal de wedstrijden op via API
+                matches = await FetchDataAsync<List<Match>>("https://jouw-api-url/matches");
 
-                // Update UI
-                teamComboBox.ItemsSource = teams;
+                // Update UI met wedstrijden
+                matchComboBox.ItemsSource = matches;
             }
             catch (Exception ex)
             {
@@ -46,41 +45,86 @@ namespace GokApp
             return JsonConvert.DeserializeObject<T>(response);
         }
 
-        private void GokButton_Click(object sender, RoutedEventArgs e)
+        private async void MatchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Team selectedTeam = teamComboBox.SelectedItem as Team;
-            if (selectedTeam == null)
+            // Haal de geselecteerde wedstrijd op
+            Match selectedMatch = matchComboBox.SelectedItem as Match;
+
+            if (selectedMatch != null)
             {
-                resultLabel.Text = "Selecteer eerst een team!";
+                // Werk de betComboBox bij met de teamnamen van de geselecteerde wedstrijd
+                betComboBox.Items.Clear();
+                betComboBox.Items.Add(selectedMatch.Team1);
+                betComboBox.Items.Add(selectedMatch.Team2);
+
+                // Zet de geselecteerde waarde naar null om te voorkomen dat er per ongeluk een gok wordt gedaan zonder keuze
+                betComboBox.SelectedItem = null;
+            }
+        }
+
+        private async void GokButton_Click(object sender, RoutedEventArgs e)
+        {
+            Match selectedMatch = matchComboBox.SelectedItem as Match;
+            if (selectedMatch == null)
+            {
+                resultLabel.Text = "Selecteer eerst een wedstrijd!";
                 resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
                 return;
             }
 
-            Result selectedResult = results.Find(r => r.TeamName == selectedTeam.Name);
-            if (selectedResult != null)
+            double betAmount;
+            if (!double.TryParse(betAmountTextBox.Text, out betAmount) || betAmount <= 0 || betAmount > balance)
             {
-                resultLabel.Text = $"{selectedResult.TeamName} heeft {selectedResult.Outcome.ToLower()}!";
-                resultLabel.Foreground = selectedResult.Outcome == "Winnend"
-                    ? new SolidColorBrush(Windows.UI.Colors.Green)
-                    : new SolidColorBrush(Windows.UI.Colors.Red);
+                resultLabel.Text = "Ongeldig bedrag. Zorg ervoor dat het bedrag binnen je saldo valt.";
+                resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                return;
+            }
+
+            string selectedBet = betComboBox.SelectedItem as string;
+            if (string.IsNullOrEmpty(selectedBet))
+            {
+                resultLabel.Text = "Selecteer een gokoptie (Team 1, Gelijk, Team 2).";
+                resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+                return;
+            }
+
+            // Haal de uitslag van de wedstrijd op via een andere API
+            var result = await FetchDataAsync<Result>($"https://jouw-api-url/results/{selectedMatch.Id}");
+
+            // Vergelijk de gok met de werkelijke uitslag
+            string resultText = "";
+            SolidColorBrush resultColor = new SolidColorBrush(Windows.UI.Colors.Gray);
+
+            if (selectedBet == result.Outcome)
+            {
+                resultText = $"Je hebt gewonnen! Het team heeft {result.Outcome.ToLower()}!";
+                resultColor = new SolidColorBrush(Windows.UI.Colors.Green);
+                balance += betAmount; // Voeg het gewonnen bedrag toe aan het saldo
             }
             else
             {
-                resultLabel.Text = $"Geen resultaat gevonden voor {selectedTeam.Name}.";
-                resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Gray);
+                resultText = $"Je hebt verloren! Het team heeft {result.Outcome.ToLower()}!";
+                resultColor = new SolidColorBrush(Windows.UI.Colors.Red);
+                balance -= betAmount; // Verlies het ingelegde bedrag
             }
+
+            resultLabel.Text = $"{resultText} Je nieuwe saldo is: {balance:C}";
+            resultLabel.Foreground = resultColor;
         }
     }
 
-    public class Team
+    public class Match
     {
-        public string Name { get; set; }
-        public double Probability { get; set; }
+        public string Id { get; set; }
+        public string Team1 { get; set; }
+        public string Team2 { get; set; }
+        public DateTime MatchDate { get; set; }
     }
 
     public class Result
     {
-        public string TeamName { get; set; }
-        public string Outcome { get; set; }
+        public string MatchId { get; set; }
+        public string Outcome { get; set; } // Team1, Gelijk, Team2
     }
 }
+

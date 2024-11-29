@@ -1,6 +1,7 @@
-﻿<Page x:Class="GokApp.MainPage"
+<Page x:Class="GokApp.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:GokApp">
 
     <Grid Background="#F0F0F0">
         <Grid.Margin>
@@ -9,19 +10,34 @@
 
         <TextBlock Text="Gokken met Nep Geld" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" />
 
-        <ComboBox x:Name="teamComboBox" HorizontalAlignment="Stretch" Margin="0,100,0,0" Height="40" FontSize="16" Padding="10">
+        <!-- ComboBox voor het kiezen van de wedstrijd -->
+        <ComboBox x:Name="matchComboBox" HorizontalAlignment="Stretch" Margin="0,100,0,0" Height="40" FontSize="16" Padding="10">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" FontSize="16"/>
+                    <TextBlock Text="{Binding Team1}" FontSize="16"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button Content="Gok!" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,160,0,0" Height="50" FontSize="18" Background="#4CAF50" Foreground="White" Click="GokButton_Click"/>
+        <!-- ComboBox voor het kiezen van de weddenschap (Team 1, Gelijk, Team 2) -->
+        <ComboBox x:Name="betComboBox" HorizontalAlignment="Stretch" Margin="0,140,0,0" Height="40" FontSize="16" Padding="10">
+            <ComboBox.Items>
+                <ComboBoxItem Content="Team 1" />
+                <ComboBoxItem Content="Gelijk" />
+                <ComboBoxItem Content="Team 2" />
+            </ComboBox.Items>
+        </ComboBox>
 
-        <TextBlock x:Name="resultLabel" Text="Resultaat: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,220,0,0" FontSize="18" FontWeight="Bold"/>
+        <!-- TextBox voor het invoeren van het bedrag -->
+        <TextBox x:Name="betAmountTextBox" HorizontalAlignment="Stretch" Margin="0,180,0,0" Height="40" FontSize="16" Padding="10" PlaceholderText="Bedrag" />
 
-        <TextBlock Text="Kies een team en klik op Gok!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" FontSize="14" FontStyle="Italic"/>
+        <!-- Knop om de gok te plaatsen -->
+        <Button Content="Gok!" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,220,0,0" Height="50" FontSize="18" Background="#4CAF50" Foreground="White" Click="GokButton_Click"/>
+
+        <!-- Label om het resultaat te tonen -->
+        <TextBlock x:Name="resultLabel" Text="Resultaat: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,280,0,0" FontSize="18" FontWeight="Bold"/>
+
+        <TextBlock Text="Kies een team en klik op Gok!" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,320,0,0" FontSize="14" FontStyle="Italic"/>
 
         <TextBlock Text="Gemaakt door GokApp Inc." HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" FontSize="12" Foreground="Gray"/>
     </Grid>
