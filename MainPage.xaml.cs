@@ -18,33 +18,36 @@ namespace GokApp
         public MainPage()
         {
             this.InitializeComponent();
-            _ = LoadMatchesAsync();
+            _ = LoadMatchesAsync(); // Asynchronously load matches when the page is loaded
         }
 
+        // Methode om wedstrijden van de API op te halen
         private async Task LoadMatchesAsync()
         {
             try
             {
                 // Haal de wedstrijden op via API
-                matches = await FetchDataAsync<List<Match>>("https://jouw-api-url/matches");
+                matches = await FetchDataAsync<List<Match>>("http://localhost:8000/matches\r\n");
 
-                // Update UI met wedstrijden
+                // Update de ComboBox met de lijst van wedstrijden
                 matchComboBox.ItemsSource = matches;
             }
             catch (Exception ex)
             {
-                // Foutmelding weergeven
+                // Foutmelding weergeven bij mislukte API-aanroep
                 resultLabel.Text = $"Fout bij het laden van gegevens: {ex.Message}";
                 resultLabel.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
             }
         }
 
+        // Methode om gegevens van de API op te halen
         private async Task<T> FetchDataAsync<T>(string url)
         {
             var response = await client.GetStringAsync(url);
             return JsonConvert.DeserializeObject<T>(response);
         }
 
+        // Event handler voor het wijzigen van de geselecteerde wedstrijd in de ComboBox
         private async void MatchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Haal de geselecteerde wedstrijd op
@@ -54,14 +57,15 @@ namespace GokApp
             {
                 // Werk de betComboBox bij met de teamnamen van de geselecteerde wedstrijd
                 betComboBox.Items.Clear();
-                betComboBox.Items.Add(selectedMatch.Team1);
-                betComboBox.Items.Add(selectedMatch.Team2);
+                betComboBox.Items.Add($"Team {selectedMatch.Team1}"); // Aangepast om team_id weer te geven
+                betComboBox.Items.Add($"Team {selectedMatch.Team2}");
 
                 // Zet de geselecteerde waarde naar null om te voorkomen dat er per ongeluk een gok wordt gedaan zonder keuze
                 betComboBox.SelectedItem = null;
             }
         }
 
+        // Event handler voor de gokknop
         private async void GokButton_Click(object sender, RoutedEventArgs e)
         {
             Match selectedMatch = matchComboBox.SelectedItem as Match;
@@ -89,7 +93,7 @@ namespace GokApp
             }
 
             // Haal de uitslag van de wedstrijd op via een andere API
-            var result = await FetchDataAsync<Result>($"https://jouw-api-url/results/{selectedMatch.Id}");
+            var result = await FetchDataAsync<Result>($"http://localhost:8000/matches\r\n{selectedMatch.Id}");
 
             // Vergelijk de gok met de werkelijke uitslag
             string resultText = "";
@@ -113,18 +117,23 @@ namespace GokApp
         }
     }
 
+    // Modelklasse voor de wedstrijdgegevens
     public class Match
     {
-        public string Id { get; set; }
-        public string Team1 { get; set; }
-        public string Team2 { get; set; }
-        public DateTime MatchDate { get; set; }
+        public int Id { get; set; }
+        public int TournamentId { get; set; }
+        public int Team1 { get; set; }
+        public int Team2 { get; set; }
+        public int? Team1Score { get; set; }  // Kan null zijn als de score nog niet bekend is
+        public int? Team2Score { get; set; }  // Kan null zijn als de score nog niet bekend is
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 
+    // Modelklasse voor de resultaten van de wedstrijd
     public class Result
     {
         public string MatchId { get; set; }
         public string Outcome { get; set; } // Team1, Gelijk, Team2
     }
 }
-
