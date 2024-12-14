@@ -1,1 +1,1 @@
-C:\laragon\native blok c\gokappC#\gokappC#.csproj;x86
+C:\laragon\www\C3-Schoolvoetbal-C-\gokappC#.csproj;x86
