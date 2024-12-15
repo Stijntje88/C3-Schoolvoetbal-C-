@@ -82,7 +82,6 @@ C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\App.xbf
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\MainPage.xbf
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\XamlSaveStateFile.xml
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\gokappC#.csproj.CoreCompileInputs.cache
-C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\gokappC#.csproj.Up2Date
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\gokappC#.exe
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\gokappC#.pdb
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\ResourceHandlingTask.state
@@ -107,3 +106,4 @@ C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\MultipleQualifiersPerDimensionF
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\ProjectArchitectures.txt
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_638316334480000000.json
 C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_638441383520000000.json
+C:\laragon\www\C3-Schoolvoetbal-C-\obj\x86\Debug\gokappC#.csproj.CopyComplete

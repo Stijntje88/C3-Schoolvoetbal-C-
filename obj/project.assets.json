@@ -11712,7 +11712,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kwadj\\.nuget\\packages\\": {},
+    "C:\\Users\\Stijn van Daelen\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
@@ -11722,7 +11722,7 @@
       "projectUniqueName": "C:\\laragon\\www\\C3-Schoolvoetbal-C-\\gokappC#.csproj",
       "projectName": "gokappC#",
       "projectPath": "C:\\laragon\\www\\C3-Schoolvoetbal-C-\\gokappC#.csproj",
-      "packagesPath": "C:\\Users\\kwadj\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Stijn van Daelen\\.nuget\\packages\\",
       "outputPath": "C:\\laragon\\www\\C3-Schoolvoetbal-C-\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
@@ -11731,7 +11731,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\kwadj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Stijn van Daelen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11746,11 +11746,6 @@
         "uap10.0.17763": {
           "projectReferences": {}
         }
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
