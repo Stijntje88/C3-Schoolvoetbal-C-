@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "GokApp-PRA (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "GokApp-PRA (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
