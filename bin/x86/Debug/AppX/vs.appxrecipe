@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-15T20:41:43.201</Modified>
+      <Modified>2024-12-16T08:12:06.606</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\gokappC#.exe">
       <PackagePath>entrypoint\gokappC#.exe</PackagePath>
-      <Modified>2024-12-15T20:41:41.619</Modified>
+      <Modified>2024-12-16T08:12:05.111</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Stijn van Daelen\.nuget\packages\microsoft.bcl.asyncinterfaces\9.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
@@ -110,15 +110,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\gokappC#.xr.xml">
       <PackagePath>gokappC#.xr.xml</PackagePath>
-      <Modified>2024-12-15T20:14:43.047</Modified>
+      <Modified>2024-12-15T22:13:42.439</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2024-12-15T20:41:41.450</Modified>
+      <Modified>2024-12-16T08:12:04.910</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2024-12-15T20:41:41.451</Modified>
+      <Modified>2024-12-16T08:12:04.910</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.22621.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -126,11 +126,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-15T20:16:25.993</Modified>
+      <Modified>2024-12-16T08:00:48.275</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\laragon\www\C3-Schoolvoetbal-C-\bin\x86\Debug\Core\gokappC#.exe">
       <PackagePath>gokappC#.exe</PackagePath>
-      <Modified>2024-12-15T20:41:43.191</Modified>
+      <Modified>2024-12-16T08:12:06.598</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

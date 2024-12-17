@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="GokApp_PRA.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GokApp_PRA"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- Start sectie -->
+        <StackPanel x:Name="StartContent" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="28" TextAlignment="Center" Margin="0 0 0 20">
+                WELKOM OP DEZE GOK APP. KLIK OM TE BEGINNEN MET GOKKEN
+            </TextBlock>
+            <Button Click="StartButton_Click" Width="200" Height="50" Background="LightBlue">Begin met gokken</Button>
+        </StackPanel>
+
+        <!-- Gok sectie die verborgen is bij start -->
+        <StackPanel x:Name="ContentSection" Visibility="Collapsed" Width="800" BorderBrush="Black" BorderThickness="2" Padding="40">
+            <TextBlock FontSize="48" FontWeight="Bold" Margin="0 0 0 20">Gok APP</TextBlock>
+
+            <!-- Keuze voor wedstrijd -->
+            <StackPanel Margin="0 0 0 30">
+                <ComboBox x:Name="matches" Width="500" SelectedValuePath="Content"></ComboBox>
+            </StackPanel>
+
+            <!-- Keuze voor weddenschap -->
+            <StackPanel Margin="0 0 0 30">
+                <ComboBox x:Name="bet" Width="500">
+                    <ComboBoxItem>Team 1</ComboBoxItem>
+                    <ComboBoxItem>Gelijk</ComboBoxItem>
+                    <ComboBoxItem>Team 2</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <!-- Bedrag voor de weddenschap -->
+            <TextBlock>Bedrag</TextBlock>
+            <TextBox x:Name="amount" Margin="0 0 0 40"></TextBox>
+            <Button x:Name="myButton" Click="myButton_Click" Margin="0 0 0 20">Gok</Button>
+
+            <!-- Foutmeldingen -->
+            <TextBlock x:Name="error" Foreground="Red"></TextBlock>
+
+            <!-- Sectie voor punten -->
+            <StackPanel BorderBrush="Black" BorderThickness="2" Padding="20" Margin="0 0 0 20" Background="#f0f8ff">
+                <TextBlock Text="Je punten:" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+                <TextBlock x:Name="puntenText" FontSize="24" FontWeight="Bold" Foreground="DarkGreen"/>
+            </StackPanel>
+
+            <!-- Sectie voor resultaat van de weddenschap (gewonnen/verloren) -->
+            <StackPanel BorderBrush="Black" BorderThickness="2" Padding="20" Margin="0 0 0 20" Background="#ffe4e1">
+                <TextBlock Text="Resultaat:" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+                <TextBlock x:Name="resultText" FontSize="24" FontWeight="Bold" Foreground="DarkRed"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>

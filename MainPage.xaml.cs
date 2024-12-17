@@ -27,7 +27,7 @@ namespace GokApp
             try
             {
                 // Haal de wedstrijden op via API
-                matches = await FetchDataAsync<List<Match>>("http://localhost:8000/matches/scores");
+                matches = await FetchDataAsync<List<Match>>("http://c3-schoolvoetbal-php.test/api/matches/scores");
 
                 // Filter alleen niet-gespeelde wedstrijden
                 var unplayedMatches = matches.FindAll(m => m.Team1Score == null && m.Team2Score == null);
@@ -105,7 +105,7 @@ namespace GokApp
             await Task.Delay(1000); // Tijd voor simulatie
 
             // Haal opnieuw gegevens op om te zien of de wedstrijd is gespeeld
-            var updatedMatches = await FetchDataAsync<List<Match>>("http://localhost:8000/matches/scores");
+            var updatedMatches = await FetchDataAsync<List<Match>>("http://c3-schoolvoetbal-php.test/api/matches/scores");
             var updatedMatch = updatedMatches.Find(m => m.Team1 == selectedMatch.Team1 && m.Team2 == selectedMatch.Team2);
 
             if (updatedMatch == null || !updatedMatch.Team1Score.HasValue || !updatedMatch.Team2Score.HasValue)
