@@ -39,6 +39,8 @@
             <TextBlock>Bedrag</TextBlock>
             <TextBox x:Name="amount" Margin="0 0 0 40"></TextBox>
             <Button x:Name="myButton" Click="myButton_Click" Margin="0 0 0 20">Gok</Button>
+            <Button Content="Check Results" Click="CheckResultsButton_Click" x:Name="CheckResultsButton" IsEnabled="True" />
+
 
             <!-- Foutmeldingen -->
             <TextBlock x:Name="error" Foreground="Red"></TextBlock>

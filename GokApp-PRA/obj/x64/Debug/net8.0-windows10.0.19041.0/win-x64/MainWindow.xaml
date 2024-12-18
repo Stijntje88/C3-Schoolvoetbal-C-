@@ -14,7 +14,7 @@
             <TextBlock FontSize="28" TextAlignment="Center" Margin="0 0 0 20">
                 WELKOM OP DEZE GOK APP. KLIK OM TE BEGINNEN MET GOKKEN
             </TextBlock>
-            <Button x:ConnectionId='11'                           Width="200" Height="50" Background="LightBlue">Begin met gokken</Button>
+            <Button x:ConnectionId='12'                           Width="200" Height="50" Background="LightBlue">Begin met gokken</Button>
         </StackPanel>
 
         <!-- Gok sectie die verborgen is bij start -->
@@ -23,12 +23,12 @@
 
             <!-- Keuze voor wedstrijd -->
             <StackPanel Margin="0 0 0 30">
-                <ComboBox x:ConnectionId='10' x:Name="matches" Width="500" SelectedValuePath="Content"></ComboBox>
+                <ComboBox x:ConnectionId='11' x:Name="matches" Width="500" SelectedValuePath="Content"></ComboBox>
             </StackPanel>
 
             <!-- Keuze voor weddenschap -->
             <StackPanel Margin="0 0 0 30">
-                <ComboBox x:ConnectionId='9' x:Name="bet" Width="500">
+                <ComboBox x:ConnectionId='10' x:Name="bet" Width="500">
                     <ComboBoxItem>Team 1</ComboBoxItem>
                     <ComboBoxItem>Gelijk</ComboBoxItem>
                     <ComboBoxItem>Team 2</ComboBoxItem>
@@ -39,20 +39,22 @@
             <TextBlock>Bedrag</TextBlock>
             <TextBox x:ConnectionId='4' x:Name="amount" Margin="0 0 0 40"></TextBox>
             <Button x:ConnectionId='5' x:Name="myButton"                        Margin="0 0 0 20">Gok</Button>
+            <Button x:ConnectionId='6' Content="Check Results"                                  x:Name="CheckResultsButton" IsEnabled="True" />
+
 
             <!-- Foutmeldingen -->
-            <TextBlock x:ConnectionId='6' x:Name="error" Foreground="Red"></TextBlock>
+            <TextBlock x:ConnectionId='7' x:Name="error" Foreground="Red"></TextBlock>
 
             <!-- Sectie voor punten -->
             <StackPanel BorderBrush="Black" BorderThickness="2" Padding="20" Margin="0 0 0 20" Background="#f0f8ff">
                 <TextBlock Text="Je punten:" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
-                <TextBlock x:ConnectionId='8' x:Name="puntenText" FontSize="24" FontWeight="Bold" Foreground="DarkGreen"/>
+                <TextBlock x:ConnectionId='9' x:Name="puntenText" FontSize="24" FontWeight="Bold" Foreground="DarkGreen"/>
             </StackPanel>
 
             <!-- Sectie voor resultaat van de weddenschap (gewonnen/verloren) -->
             <StackPanel BorderBrush="Black" BorderThickness="2" Padding="20" Margin="0 0 0 20" Background="#ffe4e1">
                 <TextBlock Text="Resultaat:" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
-                <TextBlock x:ConnectionId='7' x:Name="resultText" FontSize="24" FontWeight="Bold" Foreground="DarkRed"/>
+                <TextBlock x:ConnectionId='8' x:Name="resultText" FontSize="24" FontWeight="Bold" Foreground="DarkRed"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

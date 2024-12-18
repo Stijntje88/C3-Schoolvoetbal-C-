@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GokApp-PRA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dda08c217b76ff8a20f25be5f909f69600204c4b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b256bdef022d64eb554a1b7999558b2dfe10e0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("GokApp-PRA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GokApp-PRA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
